@@ -1,0 +1,37 @@
+<div class="col-md-5 mt-3 mx-auto">
+    <div *ngIf="loading" class="d-flex flex-column justify-content-center align-items-center vh-100">
+        <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Cargando...
+        </button>
+    </div>
+    <!--Si existe el usuario-->
+    <ng-container *ngIf="user else notUser">
+        <h1 class="text-center">
+            <!--Si hay foto de perfil-->
+            <img *ngIf="user.image" src="{{'http://localhost:3000/api/user/images/'+user.image}}" 
+                alt="Imagen de perfil" class="profileImage mr-1">
+            <img *ngIf="!user.image" src="../../../assets/images/sinFotoPerfil.png" alt="Imagen de perfil"
+                class="profileImage mr-1">
+                {{user.name}}
+        </h1>
+        <!--Si hay temas-->
+        <div *ngIf="topics.length>0 else noTopics">
+            <ul *ngFor="let topic of topics" class="list-group list-topics">
+                <li class="list-group-item">
+                    <a class="h3" [routerLink]="['/topic', topic._id]">{{topic.title}}</a><br>
+                    <span class="badge rounded-pill bg-primary">{{topic.user_id.name}}</span>
+                    <span  class="badge rounded-pill bg-light text-dark">
+                        {{topic.createdAt|amLocale:'es'|amCalendar}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <ng-template #noTopics>
+            <h3 class="text-center">No tiene temas</h3>
+        </ng-template>
+    </ng-container>
+    <ng-template #notUser>
+        <h3 class="text-center">No existe el usuario</h3>
+    </ng-template>
+</div>

@@ -1,0 +1,25 @@
+<div class="col-md-5 mt-3 mx-auto">
+    <!--Si hay usuarios-->
+    <div *ngIf="users.length>0 else noUsers">
+        <h3 class="text-center">{{pageTitle}}</h3>
+        <div *ngIf="loading" class="d-flex flex-column justify-content-center align-items-center vh-100">
+            <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Cargando...
+            </button>
+        </div>
+        <ul *ngFor="let user of users" class="list-group list-topics">
+            <li class="list-group-item">
+                <!--Si hay foto de perfil-->
+                <img *ngIf="user.image" src="{{'http://localhost:3000/api/user/images/'+user.image}}" 
+                    alt="Imagen de perfil" class="profileImage mr-1">
+                <img *ngIf="!user.image" src="../../../assets/images/sinFotoPerfil.png" 
+                    alt="Imagen de perfil" class="profileImage mr-1">
+                <a class="h3" [routerLink]="['/user-profile', user._id]">{{user.name}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<ng-template #noUsers>
+    <h3 class="text-center">No hay usuarios</h3>
+</ng-template>

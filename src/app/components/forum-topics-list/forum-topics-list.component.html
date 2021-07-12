@@ -1,0 +1,43 @@
+<div class="col-md-5 mt-3 mx-auto">
+    <!--Si hay temas-->
+    <div *ngIf="topics.length>0 else noTopics">
+        <h3 class="text-center">{{pageTitle}}</h3>
+        <div *ngIf="loading" class="d-flex flex-column justify-content-center align-items-center vh-100">
+            <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Cargando...
+            </button>
+        </div>
+        <ul *ngFor="let topic of topics" class="list-group list-topics">
+            <li class="list-group-item">
+                <a class="h3" [routerLink]="['/topic', topic._id]">{{topic.title}}</a><br>
+                <a [routerLink]="['/user-profile', topic.user_id._id]" class="badge badge-secondary">{{topic.user_id.name}}</a>
+                <span class="badge rounded-pill bg-light text-dark">{{topic.createdAt|amLocale:'es'|amCalendar}}</span>
+            </li>
+        </ul>
+        <!--Paginación-->
+        <nav class="mt-3" aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <!--A la ruta le pasamos un segundo parámetro con la propiedad-->
+                    <a class="page-link" [routerLink]="['/topics', prevPage]" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <!--Hacemos tantos enlaces como páginas haya-->
+                <li *ngFor="let page of totalPages" class="page-item">
+                    <a class="page-link" [routerLink]="['/topics', page]">{{page}}</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" [routerLink]="['/topics', nextPage]" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        <!--Fin de la paginacíon-->
+        </nav>
+    </div>
+</div>
+<ng-template #noTopics>
+    <h3 class="text-center">No hay temas</h3>
+</ng-template>

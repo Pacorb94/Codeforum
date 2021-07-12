@@ -1,0 +1,38 @@
+<div class="text-center">
+    <h3>{{pageTitle}}</h3>
+    <hr>
+    <flash-messages></flash-messages>
+    <!--La propiedad "formGroup" asocia este formulario con una propiedad del componente. En el evento
+    submit le pasamos los valores de los campos-->
+    <form [formGroup]="form" class="col-md-3 ml-0 pl-0 mx-auto">
+        <label for="title">Título:</label>
+        <!--El valor del atributo "formControlName" sirva para identificarlo Angular-->
+        <input type="text" id="title" name="title" formControlName="title" 
+            class="form-control text-center">
+        <span *ngIf="checkTouched(form.get('title'))" class="invalid-feedback d-block">
+            {{wrongValidationMessage(form.get('title'), 'título')}}
+        </span>
+        <label for="content">Escribe de lo que vas a hablar</label>
+        <textarea type="text" id="content" name="content" formControlName="content" 
+            class="form-control text-center">
+        </textarea>
+        <span *ngIf="checkTouched(form.get('content'))" class="invalid-feedback d-block">
+            {{wrongValidationMessage(form.get('content'), 'contenido')}}
+        </span>
+        <label for="lang">¿De qué lenguaje/s hablas?</label>
+        <input type="text" id="lang" name="lang" formControlName="lang"
+            class="form-control text-center">
+        <span *ngIf="checkTouched(form.get('lang'))" class="invalid-feedback d-block">
+            {{wrongValidationMessage(form.get('lang'), 'lenguaje')}}
+        </span>
+        <label for="code">Código (opcional)</label>
+        <textarea type="text" id="code" name="code" formControlName="code" 
+            class="form-control text-center">
+        </textarea>
+        <br>
+        <!--La propiedad disabled permite poner una condición, por lo que el botón se desactivará si el
+        formulario no es válido-->
+        <input type="button" value="Crear tema" (click)="createTopic()" [disabled]="!form.valid" 
+            class="btn btn-success">
+    </form>
+</div>
