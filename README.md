@@ -2,7 +2,7 @@
 Aprender Angular 12 con APIs
 
 ## Descripción
-Front-end responsive de [CodeforumAPI](url completa).
+Front-end responsive de [Codeforum-API](https://github.com/Pacorb94/Codeforum-API).
 
 ## Requisitos
 * Node.js
