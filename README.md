@@ -6,8 +6,7 @@ Front-end responsive de [CodeforumAPI](url completa).
 
 ## Requisitos
 * Node.js
-* TypeScript 4.2 (puedes probar la versión que tengas)
-* Angular
+* Angular 12 (puedes probar la versión que tengas)
 
 ## Pasos a seguir (dentro del proyecto)
 1. `npm i` o `npm install`
