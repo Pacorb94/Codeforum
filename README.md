@@ -1,16 +1,15 @@
 ## Objetivo
-Aprender Angular 12 con APIs
+Aprender Angular
 
 ## Descripción
-Front-end responsive de [Codeforum-API](https://github.com/Pacorb94/Codeforum-API).
+Front-end de [Codeforum-API](https://github.com/Pacorb94/Codeforum-API).
 
-## Requisitos
-* Node.js
-* Angular 12 (puedes probar la versión que tengas)
 
-## Pasos a seguir (dentro del proyecto)
-1. `npm i` o `npm install`
-2. `ng s -o` o `ng server -o`
+## Despliegue en producción
+0. Si no tienes Docker Compose instálalo.
+1. Despliega [Codeforum-API](https://github.com/Pacorb94/Codeforum-API)
+2. Crea los contenedores `docker-compose up -d --build`
+3. En el navegador pon `http://localhost:8081`
 
 ## Licencia
 MIT
