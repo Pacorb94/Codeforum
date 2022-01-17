@@ -1,6 +1,6 @@
 import { TopicService } from 'src/app/services/Topic.service';
-import { CheckUserGuard } from './services/CheckUser.guard';
-import { UserLoggedInGuard } from './services/UserLoggedIn.guard';
+import { CheckUserGuard } from './guards/CheckUser.guard';
+import { UserLoggedInGuard } from './guards/UserLoggedIn.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
