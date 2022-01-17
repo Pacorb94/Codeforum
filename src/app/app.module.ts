@@ -4,7 +4,6 @@ import { UserLoggedInGuard } from './guards/UserLoggedIn.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { routing, appRoutingProviders } from './app.routing';
 import { UserService } from './services/User.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MomentModule } from 'angular2-moment';
 import { ForumTopicsListComponent } from './components/forum-topics-list/forum-topics-list.component';
 //Para que funcione el panel debemos importarlo aquí
-import { UserPanelModule } from './components/user-panel/components/userPanel.module';
+import { UserPanelModule } from './components/user-panel/components/user-panel.module';
 import { TopicDetailComponent } from './components/topic-detail/topic-detail.component';
 import { NgxHighlightJsModule, NGX_HIGHLIGHT_JS_DEFAULT_THEME } from '@nowzoo/ngx-highlight-js';
 import { ErrorComponent } from './components/error/error.component';
@@ -23,6 +22,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { TopicsFinderComponent } from './components/topics-finder/topics-finder.component';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
     declarations: [
@@ -40,7 +40,7 @@ import { TopicsFinderComponent } from './components/topics-finder/topics-finder.
     ],
     imports: [
         BrowserModule,
-        routing,
+        AppRoutingModule,
         ReactiveFormsModule,
         HttpClientModule,
         MomentModule,
@@ -49,7 +49,6 @@ import { TopicsFinderComponent } from './components/topics-finder/topics-finder.
         FlashMessagesModule.forRoot()
     ],
     providers: [
-        appRoutingProviders, 
         UserService, 
         CheckUserGuard, 
         UserLoggedInGuard,
